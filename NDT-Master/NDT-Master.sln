@@ -3,6 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NDTManagement.Application", "NDTManagement.Application", "{2CD5297A-BD7D-4982-9664-2F79889B847F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NDTManagement.Domain", "NDTManagement.Domain", "{0B82AAF5-C2FC-4833-8B4A-E250F4922FAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NDTManagement.Infrastructure.Data", "NDTManagement.Infrastructure.Data", "{26D5B0A1-6A6C-445E-99F8-04D8D699C75A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NDTManagement.Infrastructure.IoC", "NDTManagement.Infrastructure.IoC", "{CD896CBE-A2DF-4358-8D8C-C7B9BC10BEF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NDTManagement.UI.MVC", "NDTManagement.UI.MVC", "{A9B38A6D-9C72-4A6F-98BC-F3448B7A4D70}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
