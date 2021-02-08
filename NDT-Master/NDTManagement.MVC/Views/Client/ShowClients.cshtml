@@ -1,0 +1,52 @@
+﻿@using NDT.Domain.Models
+@model IEnumerable<Client>
+@{
+    ViewData["Title"] = "کارفرما";
+}
+
+@*<h1>نمایش کارفرما</h1>*@
+
+<div class="table-wrapper">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-8">
+                <h2> اطلاعات کارفرما</h2>
+            </div>
+
+            <div class="col-4">
+                <button onclick="location.href='@Url.Action("Create", "Client")'" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> افزودن</button>
+            </div>
+
+        </div>
+        
+    </div>
+    <div class="table-responsive" >
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>نام کارفرما</th>
+                    <th>نام مدیر عامل</th>
+                    <th>آدرس</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var client in Model)
+                {
+                    <tr>
+                        <td>@client.ClientName</td>
+                        <td>@client.CeoName</td>
+                        <td>@client.Address</td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@client.Id">حذف</a>|
+                            <a asp-action="edit" asp-route-id="@client.Id">ویرایش</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model NDT.Domain.Models.Client
+
+@{
+    ViewData["Title"] = "ایجاد کارفرما";
+}
+
+@*<h1>Create</h1>*@
+
+@*<h4>Course</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientName" class="control-label">نام کارفرما</label>
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CeoName" class="control-label">نام مدیر عامل</label>
+                <input asp-for="CeoName" class="form-control" />
+                <span asp-validation-for="CeoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label">آدرس</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentralPhoneNo" class="control-label">تلفن دفتر مرکزی</label>
+                <input asp-for="CentralPhoneNo" class="form-control" />
+                <span asp-validation-for="CentralPhoneNo" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ایجاد" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ShowClients">بازگشت</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

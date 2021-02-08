@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace NDT.Domain.Models
 {
     public class Client
     {
+
+        [Key]
         public Guid Id { get; set; }
         /// <summary>
         /// نام کارفرما
         /// </summary>
         public string ClientName { get; set; } 
-
         /// <summary>
         /// زمینه‌ی کاری
         /// </summary>
