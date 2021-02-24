@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NDT.Infra.Data.Repositories;
 using NDT.Infra.Data.Context;
+using NDT.Infra.IOC;
 
 namespace NDTManagement.MVC
 {
@@ -33,17 +34,19 @@ namespace NDTManagement.MVC
                 options.UseSqlServer(
                     Configuration.GetConnectionString("NDTConnection")));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("NDTConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("NDTConnection")));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<NdtDbContext>();
 
             services.AddTransient<IClientRepository, ClientRepository>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            DependencyContainer.RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +75,7 @@ namespace NDTManagement.MVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

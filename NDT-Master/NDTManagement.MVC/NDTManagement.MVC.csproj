@@ -22,7 +22,9 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\NDT.Application\NDT.Application.csproj" />
     <ProjectReference Include="..\NDT.Infra.Data\NDT.Infra.Data.csproj" />
+    <ProjectReference Include="..\NDT.Infra.IOC\NDT.Infra.IOC.csproj" />
   </ItemGroup>
 
 </Project>

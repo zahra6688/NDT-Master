@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NDTManagement.MVC.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
-    {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
-    }
+    //public class ApplicationDbContext : IdentityDbContext
+    //{
+    //    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    //        : base(options)
+    //    {
+    //    }
+    //}
 }

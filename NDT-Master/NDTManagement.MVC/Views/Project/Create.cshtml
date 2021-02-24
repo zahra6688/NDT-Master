@@ -1,0 +1,57 @@
+﻿@model ProjectViewModel
+
+@{
+    ViewData["Title"] = "ایجاد پروژه";
+}
+
+<h2>ایجاد پروژه</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+        <div class="form-group">
+            <label asp-for="clientId" class="control-label"></label>
+            @*<select asp-items="@(List<SelectListItem>)ViewBag.Clients">
+            <option>--انتخاب کنید--</option>
+        </select>*@
+            @Html.DropDownListFor(x => x.clientId, (List<SelectListItem>)ViewBag.Clients)
+        </div>
+            <div class="form-group">
+                <label asp-for="projectTitle" class="control-label"></label>
+                <input asp-for="projectTitle" class="form-control" />
+                <span asp-validation-for="projectTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="state" class="control-label"></label>
+                <input asp-for="state" class="form-control" />
+                <span asp-validation-for="state" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="city" class="control-label"></label>
+                <input asp-for="city" class="form-control" />
+                <span asp-validation-for="city" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

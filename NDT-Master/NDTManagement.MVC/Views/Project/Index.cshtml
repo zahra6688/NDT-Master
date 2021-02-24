@@ -1,0 +1,58 @@
+﻿
+@using NDT.Application.ViewModels
+@model IEnumerable<ProjectViewModel>
+@{
+    ViewData["Title"] = "کارفرما";
+}
+
+@*<h1>نمایش کارفرما</h1>*@
+
+<div class="table-wrapper">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-8">
+                <h2> اطلاعات پروژه‌ها</h2>
+            </div>
+
+            <div class="col-4">
+                <button onclick="location.href='@Url.Action("Create", "Project")'" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> افزودن</button>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>عنوان پروژه</th>
+                    <th>نام کارفرما</th>
+                    <th>استان</th>
+                    <th>شهر</th>
+                    <th>آدرس</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model)
+                {
+                <tr>
+                    <td>@project.projectTitle</td>
+                    <td>@project.clientName</td>
+                    <td>@project.state</td>
+                    <td>@project.city</td>
+                    <td>@project.address</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@project.Id">حذف</a>|
+                        <a asp-action="edit" asp-route-id="@project.Id">ویرایش</a>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

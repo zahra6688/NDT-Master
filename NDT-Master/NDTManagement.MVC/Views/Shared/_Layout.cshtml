@@ -4,14 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - سامانه جامع تست‌های غیر مخرب</title>
+
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-    <link rel="stylesheet"href="~/lib/bootstrap/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap-rtl.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="/css/Sidebar.css" rel="stylesheet" />
 </head>
 <body class="rtl">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+                <!--for side menu button-->
+                <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                <!--end For side menu button-->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">سامانه جامع تست‌های غیر مخرب</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +25,8 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
+                        @*@await  Component.InvokeAsync("MenuComponent")*@
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">صفحه‌ی اصلی</a>
                         </li>
@@ -30,17 +37,36 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="ShowClients">کارفرمایان</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
+        <div id="wrapper" class="toggled">
+            <!-- Sidebar -->
+            @await Component.InvokeAsync("MenuComponent")
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div> <!-- /#page-content-wrapper -->
+        </div>
+
+
     </header>
-    <div class="container">
+    @*<div class="container">
 
-        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    @await Component.InvokeAsync("MenuComponent")
+                </div>
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
 
-            @RenderBody()
-        </main>
-    </div>
+        </div>*@
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -50,6 +76,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Sidebar.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

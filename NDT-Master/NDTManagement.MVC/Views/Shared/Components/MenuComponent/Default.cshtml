@@ -1,0 +1,45 @@
+﻿@*@model IEnumerable<NDT.Domain.Models.MenuModel>*@
+@model  NDT.Application.ViewModels.MenuViewModel
+@{
+    Layout = null;
+}
+
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        @{foreach (var item in Model.MenuList.Where(s => s.ParentId == null).GroupBy(Obj => new { Obj.Id }).Distinct().ToList())
+            {
+                <li>
+                    <a href="/@item.FirstOrDefault().ControllerName/@item.FirstOrDefault().ActionName" >
+                        @item.FirstOrDefault().Title
+                    </a>
+                    <ul>
+                        @{foreach (var firstItem in (Model.MenuList.Where(s => s.ParentId == item.FirstOrDefault().Id).ToList()))
+                            {
+                                <li>
+                                    <a href="/@firstItem.ControllerName/@firstItem.ActionName">
+                                        @firstItem.Title
+                                    </a>
+                                    <ul>
+                                        @foreach (var secondItem in (Model.MenuList.Where(s => s.ParentId == firstItem.Id).ToList()))
+                                        {
+                                            <li>
+                                                <a href="/@secondItem.ControllerName/@secondItem.ActionName">
+                                                    @secondItem.Title
+                                                </a>
+
+                                            </li>
+
+                                        }
+                                    </ul>
+
+                                </li>
+
+                            }
+                        }
+                    </ul>
+                </li>
+
+            }
+        }
+    </ul>
+</div>
